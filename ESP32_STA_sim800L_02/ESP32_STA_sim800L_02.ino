@@ -40,8 +40,8 @@ const char* local_ssid      = "ESP32";
 const char* local_password  = "01234567";  
 
 /* Internet access WiFi credentials. STA */
-const char* ssid            = "FABIAN";       
-const char* password        = "Larissa1453";  
+const char* ssid            = "FxxxxN";       
+const char* password        = "Lxxxxxxxxx3";  
 
 /* Настройки IP адреса */
 IPAddress local_ip(192,168,2,1);   // IP-network for local clients
