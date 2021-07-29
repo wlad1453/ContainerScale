@@ -9,8 +9,8 @@
 
 
 #ifndef STASSID
-#define STASSID "ESP32"                  // "FABIAN"
-#define STAPSK  "01234567"                    // "Larissa1453"
+#define STASSID "ESP32"                  // 
+#define STAPSK  "01234567"                    // 
 #endif
 
 #define sensNum 2
