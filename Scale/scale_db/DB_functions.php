@@ -45,7 +45,7 @@ function db_entry(&$conn, &$S_data) {
 	
 	$conn->close();
 }
-
+/*
 function read_db(&$conn) {
 	// Reading DB table
 
@@ -71,10 +71,59 @@ function read_db(&$conn) {
 	  }
 	} else {
 	  echo "0 results";
+	}*/
+	
+	
+	function read_db(&$conn) {
+		
+		// Reading DB
+		$sql = "SELECT N, Time, Date, Sens1, Sens2, Sens3, Sens4, Weight FROM Weight";
+		
+		$result = $conn->query($sql);	
+		/*
+		echo $sql;
+		echo "<br>";
+		echo $result;
+		echo "<br>";
+		echo $result->num_rows;
+		echo "Rows N";
+		echo "<br>";*/
+		
+		
+		echo "<table class=\"tempData\" width=\"940\" style=\"overflow-y:auto;\">
+
+		<tr>
+			<th class=\"row-1 row-ID\">No</th> 
+			<th class=\"row-1 row-DateTime\">Time</th> 
+			<th class=\"row-1 row-DateTime\">Date</th> 
+			<th class=\"row-1 row-Data\">Sens1</th> 
+			<th class=\"row-1 row-Data\">Sens2</th> 
+			<th class=\"row-1 row-Data\">Sens3</th> 
+			<th class=\"row-1 row-Data\">Sens4</th>
+			<th class=\"row-1 row-Data\">Weight</th> 
+		</tr>";
+		
+		if ($result->num_rows > 0) {
+			
+		  // output data of each row
+		  while($row = $result->fetch_assoc()) {
+			  
+			echo "<tr>";
+				echo "<td>" . $row["N"] . "</td>";	echo "<td>" . $row["Time"] . "</td>"; echo "<td>" . $row["Date"] . "</td>";
+				echo "<td>" . $row["Sens1"] . "</td>"; 		echo "<td>" . $row["Sens2"] . "</td>";		
+				echo "<td>" . $row["Sens3"] . "</td>";		echo "<td>" . $row["Sens4"] . "</td>";
+				echo "<td>" . $row["Weight"] . "</td>"; 
+			echo "</tr>";
+		  }
+		} else {
+		  echo "0 results";
+		}
+		
+		echo "</table>";		
 	}
 	
-	$conn->close();
-}
+	// $conn->close();
+// }
 
 // $conn->close();
  
