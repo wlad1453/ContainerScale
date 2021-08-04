@@ -6,16 +6,18 @@ body { background-color: #c4e3ed;
 	font-family: arial;
 	
  	}
-.tempData {
+.sensData {
 	table-layout: fixed;
-	width: 840px;
+	width: 740px;
 	border-collapse: collapse;  
 	white-space: nowrap;
 	overflow: hidden;
 }
-.row-ID {width: 10%;}
+.row-ID {width: 6%;}
 .row-DateTime {width: 15%;}
 .row-Data {width: 12%;}
+.row-sb {width: 4%;
+		border: none;}
 
 table, td, th {
   border: 2px solid black;
@@ -30,9 +32,8 @@ tr:nth-child(even){background-color: #e4f3fe}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <body>
-<div align="center"><h3>Container scale values</h3></div>
 
-<div align="center" height="800" width="940" style="overflow: hidden; overflow-y:auto;">
+<div align="center" height="800" width="740" style="overflow: hidden; overflow-y:auto;">
 <?php
 
 	require 'scale_db/DB_functions.php';
@@ -53,7 +54,7 @@ tr:nth-child(even){background-color: #e4f3fe}
 
 	
 		
-	$conn->close();	 
+	// $conn->close();	 
 ?>
 
 </div>
