@@ -12,7 +12,7 @@ function db_connect(&$cred) { //Passing arguments by reference
 
 	// Check connection
 	if ($conn->connect_error) die("Connection failed: " . $conn->connect_error); 
-	echo "Connected successfully<br>";	
+	// echo "Connected successfully<br>";	
 
 	return $conn;
 }
@@ -74,23 +74,15 @@ function read_db(&$conn) {
 	}*/
 	
 	
-	function read_db(&$conn) {
+	function read_db(&$conn) {  // DB reading and displaying it as a formatted table
 		
-		// Reading DB
+		
 		$sql = "SELECT N, Time, Date, Sens1, Sens2, Sens3, Sens4, Weight FROM Weight";
 		
 		$result = $conn->query($sql);	
-		/*
-		echo $sql;
-		echo "<br>";
-		echo $result;
-		echo "<br>";
-		echo $result->num_rows;
-		echo "Rows N";
-		echo "<br>";*/
 		
 		
-		echo "<table class=\"tempData\" width=\"940\" style=\"overflow-y:auto;\">
+		echo "<table class=\"sensData\" width=\"720\" style=\"overflow-y:auto;\">
 
 		<tr>
 			<th class=\"row-1 row-ID\">No</th> 
@@ -101,6 +93,7 @@ function read_db(&$conn) {
 			<th class=\"row-1 row-Data\">Sens3</th> 
 			<th class=\"row-1 row-Data\">Sens4</th>
 			<th class=\"row-1 row-Data\">Weight</th> 
+			<th class=\"row-1 row-sb\">xxx</th> 
 		</tr>";
 		
 		if ($result->num_rows > 0) {
@@ -112,17 +105,19 @@ function read_db(&$conn) {
 				echo "<td>" . $row["N"] . "</td>";	echo "<td>" . $row["Time"] . "</td>"; echo "<td>" . $row["Date"] . "</td>";
 				echo "<td>" . $row["Sens1"] . "</td>"; 		echo "<td>" . $row["Sens2"] . "</td>";		
 				echo "<td>" . $row["Sens3"] . "</td>";		echo "<td>" . $row["Sens4"] . "</td>";
-				echo "<td>" . $row["Weight"] . "</td>"; 
+				echo "<td>" . $row["Weight"] . "</td>"; 	echo "<td></td>";
 			echo "</tr>";
 		  }
 		} else {
 		  echo "0 results";
 		}
 		
-		echo "</table>";		
-	}
+		echo "</table>";	
+		$conn->close();
+		
+	}	// End of read_db(&$conn)
 	
-	// $conn->close();
+	
 // }
 
 // $conn->close();
